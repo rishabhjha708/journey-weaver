@@ -2,95 +2,136 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Journey Builder Design System - Premium UI */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 0 0% 99%;
+    --foreground: 222 47% 11%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 222 47% 11%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 222 47% 11%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 251 91% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 222 47% 11%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 251 91% 95%;
+    --accent-foreground: 251 91% 52%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 251 91% 62%;
 
-    --radius: 0.5rem;
+    --radius: 0.75rem;
 
-    --sidebar-background: 0 0% 98%;
+    /* Node category colors */
+    --node-trigger: 217 91% 60%;
+    --node-trigger-bg: 217 91% 97%;
+    --node-action: 142 71% 45%;
+    --node-action-bg: 142 71% 97%;
+    --node-condition: 38 92% 50%;
+    --node-condition-bg: 38 92% 97%;
+    --node-flow: 0 84% 60%;
+    --node-flow-bg: 0 84% 97%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Canvas colors */
+    --canvas-bg: 220 14% 96%;
+    --canvas-grid: 220 13% 91%;
+    --canvas-edge: 251 91% 62%;
 
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
+    /* Sidebar */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
+    --sidebar-primary: 251 91% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 251 91% 97%;
+    --sidebar-accent-foreground: 251 91% 52%;
     --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 251 91% 62%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    /* Status colors */
+    --status-draft: 220 9% 46%;
+    --status-published: 142 71% 45%;
+    --status-paused: 38 92% 50%;
+
+    /* Chart colors */
+    --chart-1: 251 91% 62%;
+    --chart-2: 217 91% 60%;
+    --chart-3: 142 71% 45%;
+    --chart-4: 38 92% 50%;
+    --chart-5: 0 84% 60%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 224 71% 7%;
+    --card-foreground: 213 31% 91%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 224 71% 7%;
+    --popover-foreground: 213 31% 91%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 251 91% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 223 47% 11%;
+    --secondary-foreground: 213 31% 91%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 251 91% 15%;
+    --accent-foreground: 251 91% 72%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 251 91% 62%;
+
+    /* Node category colors - dark mode */
+    --node-trigger: 217 91% 65%;
+    --node-trigger-bg: 217 91% 15%;
+    --node-action: 142 71% 50%;
+    --node-action-bg: 142 71% 15%;
+    --node-condition: 38 92% 55%;
+    --node-condition-bg: 38 92% 15%;
+    --node-flow: 0 84% 65%;
+    --node-flow-bg: 0 84% 15%;
+
+    /* Canvas colors - dark mode */
+    --canvas-bg: 224 71% 6%;
+    --canvas-grid: 216 34% 17%;
+    --canvas-edge: 251 91% 62%;
+
+    /* Sidebar - dark mode */
+    --sidebar-background: 224 71% 6%;
+    --sidebar-foreground: 213 31% 91%;
+    --sidebar-primary: 251 91% 62%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 251 91% 15%;
+    --sidebar-accent-foreground: 251 91% 72%;
+    --sidebar-border: 216 34% 17%;
+    --sidebar-ring: 251 91% 62%;
+
+    /* Status colors - dark mode */
+    --status-draft: 215 20% 65%;
+    --status-published: 142 71% 50%;
+    --status-paused: 38 92% 55%;
   }
 }
 
@@ -100,6 +141,95 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
   }
+}
+
+@layer components {
+  /* Node base styles */
+  .journey-node {
+    @apply rounded-xl border-2 bg-card shadow-lg transition-all duration-200;
+    @apply hover:shadow-xl hover:scale-[1.02];
+  }
+
+  .journey-node.selected {
+    @apply ring-2 ring-primary ring-offset-2 ring-offset-background;
+  }
+
+  .journey-node-trigger {
+    @apply border-[hsl(var(--node-trigger))] bg-[hsl(var(--node-trigger-bg))];
+  }
+
+  .journey-node-action {
+    @apply border-[hsl(var(--node-action))] bg-[hsl(var(--node-action-bg))];
+  }
+
+  .journey-node-condition {
+    @apply border-[hsl(var(--node-condition))] bg-[hsl(var(--node-condition-bg))];
+  }
+
+  .journey-node-flow {
+    @apply border-[hsl(var(--node-flow))] bg-[hsl(var(--node-flow-bg))];
+  }
+
+  /* Custom scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-[hsl(var(--node-trigger))] bg-clip-text text-transparent;
+  }
+}
+
+/* React Flow custom styles */
+.react-flow__node {
+  cursor: grab;
+}
+
+.react-flow__node:active {
+  cursor: grabbing;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2;
+}
+
+.react-flow__connection-line {
+  stroke-width: 2;
+}
+
+.react-flow__minimap {
+  @apply rounded-lg overflow-hidden shadow-lg border border-border;
+}
+
+.react-flow__controls {
+  @apply rounded-lg overflow-hidden shadow-lg border border-border;
+}
+
+.react-flow__controls-button {
+  @apply bg-card border-border hover:bg-muted;
+}
+
+.react-flow__background {
+  background-color: hsl(var(--canvas-bg));
 }

@@ -57,6 +57,10 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        "node-trigger": "hsl(var(--node-trigger))",
+        "node-action": "hsl(var(--node-action))",
+        "node-condition": "hsl(var(--node-condition))",
+        "node-flow": "hsl(var(--node-flow))",
       },
       borderRadius: {
         lg: "var(--radius)",
