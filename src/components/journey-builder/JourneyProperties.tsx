@@ -65,7 +65,7 @@ export function JourneyProperties({
           </Badge>
         </div>
         <p className="text-xs text-muted-foreground">
-          Version {journey.version} • Last saved {journey.updatedAt.toLocaleTimeString()}
+          Version {journey.version} • Last saved {new Date(journey.updatedAt).toLocaleTimeString()}
         </p>
       </div>
 
