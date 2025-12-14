@@ -16,6 +16,7 @@ import { AnimatePresence } from 'framer-motion';
 import { useJourneyStore } from '@/stores/journeyStore';
 import { useUIStore } from '@/stores/uiStore';
 import { nodeTypes } from '@/components/nodes';
+import { edgeTypes } from '@/components/edges/LabeledEdge';
 import { NodeSidebar } from './NodeSidebar';
 import { NodeEditor } from './NodeEditor';
 import { ContextMenu } from './ContextMenu';
@@ -163,11 +164,12 @@ function JourneyCanvas() {
           onDragOver={onDragOver}
           onDrop={onDrop}
           nodeTypes={nodeTypes}
+          edgeTypes={edgeTypes}
           fitView
           snapToGrid
           snapGrid={[16, 16]}
           defaultEdgeOptions={{
-            type: 'smoothstep',
+            type: 'labeled',
             animated: true,
             style: { stroke: 'hsl(251, 91%, 62%)', strokeWidth: 2 },
             markerEnd: {

@@ -71,11 +71,38 @@ export const useJourneyStore = create<JourneyState>()(
       },
 
       onConnect: (connection) => {
+        const sourceNode = get().nodes.find(n => n.id === connection.source);
+        const sourceCategory = sourceNode?.data?.category;
+        const sourceType = sourceNode?.data?.type;
+        
+        // Determine edge label based on source node type
+        let label = '';
+        let labelType = '';
+        
+        if (sourceCategory === 'condition') {
+          // For condition nodes, use handle ID to determine Yes/No
+          if (connection.sourceHandle === 'yes' || connection.sourceHandle === 'true') {
+            label = 'Yes';
+            labelType = 'success';
+          } else if (connection.sourceHandle === 'no' || connection.sourceHandle === 'false') {
+            label = 'No';
+            labelType = 'failure';
+          } else {
+            label = 'Match';
+            labelType = 'success';
+          }
+        } else if (sourceType === 'split') {
+          label = 'Branch';
+        } else if (sourceCategory === 'flow' && sourceType?.includes('wait')) {
+          label = 'Continue';
+          labelType = 'timeout';
+        }
+        
         set({
           edges: addEdge(
             { 
               ...connection, 
-              type: 'smoothstep',
+              type: 'labeled',
               animated: true,
               style: { stroke: 'hsl(251, 91%, 62%)', strokeWidth: 2 },
               markerEnd: {
@@ -84,6 +111,8 @@ export const useJourneyStore = create<JourneyState>()(
                 width: 20,
                 height: 20,
               },
+              label,
+              data: { label, labelType },
             }, 
             get().edges
           ),
