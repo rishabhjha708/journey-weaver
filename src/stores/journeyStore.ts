@@ -74,22 +74,44 @@ export const useJourneyStore = create<JourneyState>()(
         const sourceNode = get().nodes.find(n => n.id === connection.source);
         const sourceCategory = sourceNode?.data?.category;
         const sourceType = sourceNode?.data?.type;
+        const sourceHandle = connection.sourceHandle;
         
-        // Determine edge label based on source node type
+        // Determine edge label based on source node type and handle
         let label = '';
         let labelType = '';
         
         if (sourceCategory === 'condition') {
           // For condition nodes, use handle ID to determine Yes/No
-          if (connection.sourceHandle === 'yes' || connection.sourceHandle === 'true') {
+          if (sourceHandle === 'yes' || sourceHandle === 'true') {
             label = 'Yes';
             labelType = 'success';
-          } else if (connection.sourceHandle === 'no' || connection.sourceHandle === 'false') {
+          } else if (sourceHandle === 'no' || sourceHandle === 'false') {
             label = 'No';
             labelType = 'failure';
           } else {
             label = 'Match';
             labelType = 'success';
+          }
+        } else if (sourceCategory === 'action' && sourceHandle && sourceHandle !== 'default') {
+          // For action nodes with specific outcome handles
+          const handleLabels: Record<string, { label: string; type: string }> = {
+            'on-sent': { label: 'On Sent', type: 'success' },
+            'on-delivered': { label: 'On Delivered', type: 'success' },
+            'on-open': { label: 'On Open', type: 'success' },
+            'on-read': { label: 'On Read', type: 'success' },
+            'on-click': { label: 'On Click', type: 'success' },
+            'on-bounce': { label: 'On Bounce', type: 'failure' },
+            'on-unsubscribe': { label: 'On Unsubscribe', type: 'failure' },
+            'on-failure': { label: 'On Failure', type: 'failure' },
+            'on-dismiss': { label: 'On Dismiss', type: 'timeout' },
+            'on-close': { label: 'On Close', type: 'timeout' },
+            'on-shown': { label: 'On Shown', type: 'success' },
+            'on-success': { label: 'On Success', type: 'success' },
+          };
+          const handleConfig = handleLabels[sourceHandle];
+          if (handleConfig) {
+            label = handleConfig.label;
+            labelType = handleConfig.type;
           }
         } else if (sourceType === 'split') {
           label = 'Branch';
