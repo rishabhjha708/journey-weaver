@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Node, Edge, addEdge, applyNodeChanges, applyEdgeChanges, Connection, NodeChange, EdgeChange } from 'reactflow';
+import { Node, Edge, addEdge, applyNodeChanges, applyEdgeChanges, Connection, NodeChange, EdgeChange, MarkerType } from 'reactflow';
 import { Journey, JourneyNodeData } from '@/types/journey';
 
 interface JourneyState {
@@ -77,7 +77,13 @@ export const useJourneyStore = create<JourneyState>()(
               ...connection, 
               type: 'smoothstep',
               animated: true,
-              style: { stroke: 'hsl(251, 91%, 62%)', strokeWidth: 2 }
+              style: { stroke: 'hsl(251, 91%, 62%)', strokeWidth: 2 },
+              markerEnd: {
+                type: MarkerType.ArrowClosed,
+                color: 'hsl(251, 91%, 62%)',
+                width: 20,
+                height: 20,
+              },
             }, 
             get().edges
           ),

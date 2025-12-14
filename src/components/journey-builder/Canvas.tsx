@@ -8,6 +8,7 @@ import ReactFlow, {
   ReactFlowProvider,
   useReactFlow,
   BackgroundVariant,
+  MarkerType,
 } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { AnimatePresence } from 'framer-motion';
@@ -169,6 +170,12 @@ function JourneyCanvas() {
             type: 'smoothstep',
             animated: true,
             style: { stroke: 'hsl(251, 91%, 62%)', strokeWidth: 2 },
+            markerEnd: {
+              type: MarkerType.ArrowClosed,
+              color: 'hsl(251, 91%, 62%)',
+              width: 20,
+              height: 20,
+            },
           }}
           proOptions={{ hideAttribution: true }}
         >
